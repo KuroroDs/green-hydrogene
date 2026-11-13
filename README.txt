@@ -19,6 +19,14 @@ Tips
   - Keep each file under about 100 MB, or upload to a video host.
   - To publish, upload the whole folder to any web host.
 
+  PUBLISH WITH GITHUB PAGES
+    The GitHub Actions workflow deploys the site automatically whenever changes
+    are pushed to the main branch. To publish:
+    1. In the repository on GitHub, open Settings > Pages.
+    2. Set the build and deployment source to GitHub Actions.
+    3. Push your changes to main, or run "Deploy to GitHub Pages" from the
+       Actions tab.
+
 HOMEPAGE BACKGROUND (photos and videos)
   Open assets/hero.js and list the photos and videos you want behind the title.
     { type: "image", src: "assets/images/my-photo.jpg" }
