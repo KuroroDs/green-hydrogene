@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>H₂ Academy – Free green hydrogen courses</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--soft:#f7f8fa;--ink:#21242c;--muted:#5f6368;--line:#dbdcdf;--blue:#1865f2;--blueh:#1250c4;--green:#14bf96;--navy:#0b2149;--navy2:#0a1a3a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1626;--soft:#141f35;--ink:#eef1f6;--muted:#a3adc2;--line:#27344f;--blue:#6aa0ff;--blueh:#8db6ff}}
+:root[data-theme="dark"]{--bg:#0e1626;--soft:#141f35;--ink:#eef1f6;--muted:#a3adc2;--line:#27344f;--blue:#6aa0ff;--blueh:#8db6ff}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Lato,system-ui,sans-serif}
+h1,h2,h3{margin:0 0 .5em;line-height:1.2;font-weight:900}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.logo{font-weight:900;font-size:21px;text-decoration:none;display:flex;align-items:center;gap:8px;color:var(--ink)}
+.logo video{width:64px;height:36px;border-radius:6px;object-fit:cover;background:#0b2149}
+.logo b{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--green);color:#fff;font-size:15px}
+header nav a{text-decoration:none;font-weight:700;font-size:15px;margin-right:18px}
+.sp{flex:1}
+.search{border:1px solid var(--line);border-radius:6px;padding:8px 12px;min-width:200px;font:inherit;background:var(--bg);color:var(--ink)}
+.btn{display:inline-block;padding:11px 22px;border-radius:6px;border:2px solid var(--blue);background:var(--blue);color:#fff;font:700 16px Lato,sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--blueh);border-color:var(--blueh)}
+.btn.out{background:transparent;color:var(--blue)}
+.btn.out:hover{background:var(--soft)}
+.btn.sm{padding:7px 16px;font-size:14px}
+.hero{background:linear-gradient(135deg,#0b2149 0%,#14507a 60%,#14bf96 140%);color:#fff;padding:70px 0}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,5vw,54px)}
+.hero p{font-size:19px;max-width:480px;color:#dbe8f5}
+.hero .btn.out{color:#fff;border-color:#fff;margin-left:8px}
+.hero .btn.out:hover{background:rgba(255,255,255,.12)}
+.hero .btn:not(.out){background:#fff;color:#0b2149;border-color:#fff}
+.stats{display:flex;gap:32px;margin-top:28px;font-size:14px;color:#dbe8f5}
+.stats b{display:block;font-size:26px;color:#fff}
+section{padding:60px 0}
+section h2{font-size:clamp(26px,3.5vw,34px)}
+.lead{color:var(--muted);max-width:620px}
+/* video */
+.player{border-radius:12px;overflow:hidden;background:#000;box-shadow:0 12px 40px rgba(0,0,0,.35);position:relative;aspect-ratio:16/9}
+.player video{width:100%;height:100%;display:block;background:#0a1a3a;object-fit:cover}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;background:linear-gradient(135deg,#0a1a3a,#14507a);text-align:center;padding:20px}
+.ph .play{width:68px;height:68px;border-radius:50%;background:var(--green);display:grid;place-items:center;font-size:26px}
+.ph small{color:#bcd3e8}
+.vgrid{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-top:26px;align-items:start}
+.vlist{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vlist button{display:flex;gap:12px;width:100%;text-align:left;padding:14px 16px;border:0;border-bottom:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.vlist button:last-child{border:0}
+.vlist button:hover,.vlist button[aria-current="true"]{background:var(--soft)}
+.vlist button[aria-current="true"]{box-shadow:inset 4px 0 var(--green)}
+.vlist .n{width:26px;height:26px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:13px;font-weight:700;flex:none;border:1px solid var(--line)}
+.vlist b{display:block;font-size:15px}.vlist span{font-size:13px;color:var(--muted)}
+.upl{margin-top:12px;font-size:14px;color:var(--muted)}
+.upl input{display:block;margin-top:6px;max-width:100%}
+/* subjects */
+.soft{background:var(--soft)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:26px}
+.tile{background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.tile .top{height:96px;display:grid;place-items:center;font-size:40px;color:#fff}
+.tile .in{padding:18px;display:flex;flex-direction:column;flex:1}
+.tile h3{font-size:18px;margin-bottom:6px}
+.tile p{color:var(--muted);font-size:14px;margin:0 0 14px;flex:1}
+.tag{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.tab{padding:7px 16px;border:1px solid var(--line);border-radius:20px;background:var(--bg);color:var(--ink);font:700 14px Lato,sans-serif;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+.steps div{text-align:center}
+.steps i{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 14px;border-radius:50%;background:var(--green);color:#fff;font-style:normal;font-size:28px}
+.steps p{color:var(--muted);margin:0}
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta h2{color:#fff}.cta p{color:#c4d0e6}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.row input{padding:12px 16px;border-radius:6px;border:0;min-width:260px;font:inherit}
+#msg{margin-top:12px;min-height:24px;color:#7ee8c9}
+footer{background:var(--navy2);color:#9fb0cf;padding:34px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer a{margin-right:16px;text-decoration:none}
+@media (max-width:860px){.hero .wrap,.vgrid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}header nav,.search{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="index.html" aria-label="H₂ Academy home"><video src="assets/logohydro.mp4" poster="assets/images/logo-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>H₂ Academy</a>
+<nav><a href="#intro">Intro videos</a><a href="#courses">Courses</a><a href="#how">How it works</a></nav>
+<div class="sp"></div>
+<input class="search" type="search" id="q" placeholder="Search courses" aria-label="Search courses">
+<a class="btn out sm" href="#join">Log in</a><a class="btn sm" href="#join">Sign up</a>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<div>
+<h1>Learn green hydrogen. For free. For anyone.</h1>
+<p>Short video lessons, practice quizzes and certificates on the clean fuel made from water and renewable power.</p>
+<a class="btn" href="#courses">Start learning</a><a class="btn out" href="#intro">Watch the intro</a>
+<div class="stats"><div><b>6</b>courses</div><div><b>40+</b>video lessons</div><div><b>Free</b>for everyone</div></div>
+</div>
+<div class="player"><video src="assets/logohydro.mp4" poster="assets/images/logo-poster.jpg" autoplay muted loop playsinline controls aria-label="H₂ Academy brand video"></video></div>
+</div></div>
+
+<section id="intro"><div class="wrap">
+<h2>Start with the intro videos</h2>
+<p class="lead">Short videos explain green hydrogen from scratch. No background needed.</p>
+<div class="vgrid">
+<div>
+<div class="player"><video id="mainVid" controls preload="metadata" playsinline aria-label="Lesson video"></video>
+<div class="ph" id="mainPh"><div class="play">▶</div><b id="mainTitle">What is green hydrogen?</b><small id="mainSub">Click to play</small></div></div>
+<p class="upl" id="info"></p>
+</div>
+<div class="vlist" id="vlist" role="list"></div>
+</div>
+</div></section>
+
+<section id="courses" class="soft"><div class="wrap">
+<h2>Choose a course</h2>
+<p class="lead">Every course has videos, practice questions and a certificate.</p>
+<div class="tabs" id="tabs" role="group" aria-label="Filter by level"></div>
+<div class="tiles" id="tiles"></div>
+</div></section>
+
+<section id="how"><div class="wrap">
+<h2>How it works</h2>
+<div class="steps">
+<div><i>▶</i><h3>Watch</h3><p>Short videos from engineers and researchers.</p></div>
+<div><i>✎</i><h3>Practice</h3><p>Quizzes after every lesson show what you remember.</p></div>
+<div><i>★</i><h3>Get certified</h3><p>Finish a course and download your certificate.</p></div>
+</div>
+</div></section>
+
+<section class="cta" id="join"><div class="wrap">
+<h2>Create a free account</h2>
+<p>Save your progress and get new courses as they launch.</p>
+<div class="row"><input id="email" type="email" placeholder="you@example.com" aria-label="Email address"><button class="btn" id="go" type="button" style="background:var(--green);border-color:var(--green)">Sign up</button></div>
+<div id="msg" role="status"></div>
+</div></section>
+</main>
+<footer><div class="wrap"><div><a href="#courses">Courses</a><a href="#intro">Videos</a><a href="#join">Sign up</a></div><div>© H₂ Academy · Sample content</div></div></footer>
+
+<script src="assets/videos.js"></script>
+<script>
+var V=window.VIDEOS||[],cur=0,vl=document.getElementById("vlist"),mv=document.getElementById("mainVid"),mp=document.getElementById("mainPh");
+function ph(t,sub,show){document.getElementById("mainTitle").textContent=t;document.getElementById("mainSub").textContent=sub;mp.style.display=show?"flex":"none"}
+function sel(i){cur=i;[].forEach.call(vl.children,function(b,j){b.setAttribute("aria-current",j==i)});
+var v=V[i];if(!v)return;mv.poster=v.poster||"";mv.src=v.file;ph(v.title,"Press play",false);document.getElementById("info").textContent=v.info||""}
+mv.onerror=function(){if(V[cur])ph(V[cur].title,"Video file not found: "+V[cur].file,true)};
+if(!V.length){ph("No videos yet","Add files to assets/videos and list them in assets/videos.js",true);vl.innerHTML='<p style="padding:16px;margin:0;color:var(--muted)">The playlist is empty.</p>'}
+V.forEach(function(v,i){var b=document.createElement("button");b.type="button";b.setAttribute("role","listitem");
+var n=document.createElement("span");n.className="n";n.textContent=i+1;var d=document.createElement("div"),t=document.createElement("b"),m=document.createElement("span");
+t.textContent=v.title;m.textContent=(v.time||"")+" video";d.appendChild(t);d.appendChild(m);b.appendChild(n);b.appendChild(d);b.onclick=function(){sel(i);mv.play().catch(function(){})};vl.appendChild(b)});
+if(V.length)sel(0);
+
+var C=[["Green Hydrogen Fundamentals","Beginner","⚛","#14bf96","4 hours","What hydrogen is, how it is made, and why it matters."],
+["Hydrogen Safety Essentials","Beginner","🛡","#e07b39","3 hours","Leaks, flammability, detection and safe operation."],
+["Electrolyser Technologies","Intermediate","⚡","#1865f2","6 hours","Alkaline, PEM and solid oxide systems compared."],
+["Storage and Transport","Intermediate","🚢","#7b4ad9","5 hours","Compressed gas, liquid hydrogen, ammonia and pipelines."],
+["Project Economics and Policy","Advanced","📈","#d92916","8 hours","Cost of hydrogen, subsidies, certification and offtake."],
+["Hydrogen in Industry and Mobility","Advanced","🏭","#0b2149","7 hours","Steel, fertiliser, trucks, trains and ships."]];
+var lv=["All","Beginner","Intermediate","Advanced"],L="All",Q="",t=document.getElementById("tiles"),tb=document.getElementById("tabs");
+function draw(){t.innerHTML="";var n=0;C.forEach(function(c){if((L=="All"||c[1]==L)&&c[0].toLowerCase().indexOf(Q)>-1){n++;
+var e=document.createElement("article");e.className="tile";
+e.innerHTML='<div class="top" style="background:'+c[3]+'" aria-hidden="true">'+c[2]+'</div><div class="in"><div class="tag">'+c[1]+' · '+c[4]+'</div><h3>'+c[0]+'</h3><p>'+c[5]+'</p><a class="btn out sm" href="#join" data-t="'+c[0]+'">Enroll for free</a></div>';t.appendChild(e)}});
+if(!n)t.innerHTML='<p>No courses match. Clear the search or choose another level.</p>';
+[].forEach.call(tb.children,function(b){b.setAttribute("aria-pressed",b.textContent==L)})}
+lv.forEach(function(x){var b=document.createElement("button");b.type="button";b.className="tab";b.textContent=x;b.onclick=function(){L=x;draw()};tb.appendChild(b)});
+document.getElementById("q").oninput=function(e){Q=e.target.value.toLowerCase();draw()};
+t.addEventListener("click",function(e){var a=e.target.closest("a[data-t]");if(a)document.getElementById("msg").textContent="Sign up to enroll in “"+a.dataset.t+"”."});
+draw();
+document.getElementById("go").onclick=function(){var v=document.getElementById("email").value;
+document.getElementById("msg").textContent=/^\S+@\S+\.\S+$/.test(v)?"Thank you! Check your inbox soon.":"Enter a valid email address."};
+</script>
+</body>
+</html>
